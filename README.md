@@ -1,6 +1,6 @@
 # react-modern-calendar-datepicker
 
-- Super thanks for ontributions! 
+- Super thanks for contributions! 
 - Ref: https://github.com/doananh234/react-modern-calendar-datepicker
 
 
