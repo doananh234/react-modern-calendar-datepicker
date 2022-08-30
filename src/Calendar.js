@@ -86,11 +86,19 @@ const Calendar = ({
       ...mainState,
       monthChangeDirection: direction,
     });
+
     if (direction === 'NEXT') {
-      handleOnChange({ ...activeDate, month: activeDate.month === 12 ? 1 : activeDate.month + 1 });
+      const month = activeDate.month === 12 ? 1 : activeDate.month + 1;
+      const year = activeDate.month === 12 ? activeDate.year + 1 : activeDate.year;
+
+      handleOnChange({ ...activeDate, month, year });
     }
+
     if (direction === 'PREVIOUS') {
-      handleOnChange({ ...activeDate, month: activeDate.month === 1 ? 12 : activeDate.month - 1 });
+      const month = activeDate.month === 1 ? 12 : activeDate.month - 1;
+      const year = activeDate.month === 1 ? activeDate.year - 1 : activeDate.year;
+
+      handleOnChange({ ...activeDate, month, year });
     }
   };
 
@@ -111,12 +119,13 @@ const Calendar = ({
     handleOnChange({ ...activeDate, month: newMonthNumber });
   };
 
-  const selectYear = year => {
+  const selectYear = newYearNumber => {
     setMainState({
       ...mainState,
-      activeDate: { ...activeDate, year },
+      activeDate: { ...activeDate, year: newYearNumber },
       isYearSelectorOpen: false,
     });
+    handleOnChange({ ...activeDate, year: newYearNumber });
   };
 
   return (
