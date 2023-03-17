@@ -1,3 +1,4 @@
+import React from 'react';
 import { Link } from 'gatsby';
 
 import { DOCS_NAVBAR_ITEMS, } from '../../constants/docsConstants';

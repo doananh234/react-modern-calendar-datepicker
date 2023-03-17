@@ -1,4 +1,3 @@
-const webpack = require('webpack');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -38,11 +37,7 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    htmlWebpackPlugin,
-    new webpack.ProvidePlugin({
-      "React": "react",
-    })],
+  plugins: [htmlWebpackPlugin],
   resolve: {
     extensions: ['.js', '.jsx'],
   },
