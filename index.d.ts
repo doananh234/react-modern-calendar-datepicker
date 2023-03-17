@@ -26,6 +26,7 @@ export interface CalendarProps<TValue extends Value> {
   disabledDays?: Day[];
   bookedDays?: Day[];
   pendingDays?: Day[];
+  isCloseCalendarAfterSelectDate?: boolean
   shouldHighlightWeekends?: boolean;
   colorPrimary?: string;
   colorPrimaryLight?: string;
