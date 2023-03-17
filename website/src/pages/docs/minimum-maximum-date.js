@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Calendar, utils } from 'react-modern-calendar-datepicker';
 
 import Docs from '../../containers/docs';

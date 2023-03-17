@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'gatsby';
 import DatePicker, { Calendar } from 'react-modern-calendar-datepicker';
 
