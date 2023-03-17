@@ -1,4 +1,3 @@
-import React from 'react';
 import { utils } from 'react-modern-calendar-datepicker';
 import { Link } from 'gatsby';
 import Docs from '../../containers/docs';

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'gatsby';
 
 import { ReactComponent as Logo } from '../../images/logo.svg';

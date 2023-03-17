@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Layout, SEO, DocsNav } from '../components';
 
 import './docs.css';

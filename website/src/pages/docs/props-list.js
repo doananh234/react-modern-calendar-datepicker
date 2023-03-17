@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Docs from '../../containers/docs';
 import { Table } from '../../components';
 import { PROPS_TABLE_HEADERS, PROPS_TABLE_CALENDAR_ROWS, PROPS_TABLE_PICKER_ROWS } from '../../constants/docsConstants';

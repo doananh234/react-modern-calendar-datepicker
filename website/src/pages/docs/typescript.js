@@ -1,5 +1,3 @@
-import React from 'react';
-
 import Docs from '../../containers/docs';
 import { Code } from '../../components';
 
