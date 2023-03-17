@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 
 import { isSameDay } from '../shared/generalUtils';
 import handleKeyboardNavigation from '../shared/keyboardNavigation';

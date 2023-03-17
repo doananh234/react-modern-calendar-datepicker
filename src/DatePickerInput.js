@@ -1,11 +1,11 @@
-import { forwardRef } from 'react';
+import React from 'react';
 
 import EventIcon from '@material-ui/icons/Event';
 import { useLocaleUtils, useLocaleLanguage } from './shared/hooks';
 import { putZero, getValueType } from './shared/generalUtils';
 import { TYPE_SINGLE_DATE, TYPE_RANGE, TYPE_MUTLI_DATE } from './shared/constants';
 
-const DatePickerInput = forwardRef(
+const DatePickerInput = React.forwardRef(
   (
     {
       value,

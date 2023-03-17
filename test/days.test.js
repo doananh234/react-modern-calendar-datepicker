@@ -1,3 +1,4 @@
+import React from 'react';
 import { render, fireEvent, getByText } from '@testing-library/react';
 
 import utils from '../src/shared/localeUtils';

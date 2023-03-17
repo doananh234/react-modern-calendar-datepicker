@@ -1,3 +1,5 @@
+import React from 'react';
+
 import Docs from '../../containers/docs';
 import { Contributor } from '../../components';
 import { CONTRIBUTORS } from '../../constants/contributorsConstants';
