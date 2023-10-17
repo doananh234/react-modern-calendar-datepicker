@@ -38,6 +38,8 @@ const DatePicker = ({
   onChangeMonth,
   handleOnChange,
   isCloseCalendarAfterSelectDate,
+  onSubmit,
+  onReset,
 }) => {
   const calendarContainerElement = useRef(null);
   const inputElement = useRef(null);
@@ -144,9 +146,11 @@ const DatePicker = ({
       });
     }
     setCalendarVisiblity(false);
+    onReset();
   };
   const handleApply = () => {
     setCalendarVisiblity(false);
+    onSubmit();
   };
 
   const renderFooterDefault = () => (
@@ -159,6 +163,7 @@ const DatePicker = ({
       </button>
     </div>
   );
+
   useEffect(() => {
     if (!isCalendarOpen && shouldPreventToggle.current) {
       inputElement.current.focus();
