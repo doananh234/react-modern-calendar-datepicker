@@ -26,6 +26,7 @@ export interface CalendarProps<TValue extends Value> {
   disabledDays?: Day[];
   bookedDays?: Day[];
   pendingDays?: Day[];
+  isCloseCalendarAfterSelectDate?: boolean
   shouldHighlightWeekends?: boolean;
   colorPrimary?: string;
   colorPrimaryLight?: string;
@@ -59,6 +60,8 @@ export interface DatePickerProps<TValue extends Value> extends CalendarProps<TVa
   formatInputText?: () => string;
   renderInput?: React.FC<RenderInputProps>;
   onChangeMonth?: (month: object, direction: string) => void;
+  onSubmit?: () => void,
+  onReset?: () => void,
 }
 
 type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;

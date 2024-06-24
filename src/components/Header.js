@@ -163,7 +163,7 @@ const Header = ({
         className="Calendar__monthArrowWrapper -right"
         onClick={() => {
           onMonthChangeTrigger('PREVIOUS');
-          onChangeMonth(activeDate, directionArrow);
+          onChangeMonth(activeDate, 'PREVIOUS');
         }}
         aria-label={previousMonth}
         type="button"
@@ -183,7 +183,7 @@ const Header = ({
         className="Calendar__monthArrowWrapper -left"
         onClick={() => {
           onMonthChangeTrigger('NEXT');
-          onChangeMonth(activeDate, directionArrow);
+          onChangeMonth(activeDate, 'NEXT');
         }}
         aria-label={nextMonth}
         type="button"

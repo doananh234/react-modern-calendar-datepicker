@@ -37,11 +37,15 @@ const DatePicker = ({
   customDaysClassName,
   onChangeMonth,
   handleOnChange,
+  isCloseCalendarAfterSelectDate,
+  onSubmit,
+  onReset,
 }) => {
   const calendarContainerElement = useRef(null);
   const inputElement = useRef(null);
   const shouldPreventToggle = useRef(false);
   const [isCalendarOpen, setCalendarVisiblity] = useState(false);
+
   useEffect(() => {
     const handleBlur = () => {
       setCalendarVisiblity(false);
@@ -52,6 +56,7 @@ const DatePicker = ({
     };
   }, []);
   // handle input focus/blur
+
   useEffect(() => {
     const valueType = getValueType(value);
     if (valueType === TYPE_MUTLI_DATE) return; // no need to close the calendar
@@ -112,6 +117,9 @@ const DatePicker = ({
 
   const handleCalendarChange = newValue => {
     onChange(newValue);
+    if (isCloseCalendarAfterSelectDate) {
+      setCalendarVisiblity(false);
+    }
   };
 
   const handleKeyUp = ({ key }) => {
@@ -137,9 +145,11 @@ const DatePicker = ({
         to: null,
       });
     }
+    onReset();
     setCalendarVisiblity(false);
   };
   const handleApply = () => {
+    onSubmit();
     setCalendarVisiblity(false);
   };
 
@@ -153,6 +163,7 @@ const DatePicker = ({
       </button>
     </div>
   );
+
   useEffect(() => {
     if (!isCalendarOpen && shouldPreventToggle.current) {
       inputElement.current.focus();
@@ -229,6 +240,8 @@ DatePicker.defaultProps = {
   wrapperClassName: '',
   locale: 'en',
   calendarPopperPosition: 'top',
+  onSubmit: () => {},
+  onReset: () => {},
 };
 
 export default DatePicker;

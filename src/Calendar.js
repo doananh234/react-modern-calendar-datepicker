@@ -1,10 +1,11 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 
 import { getDateAccordingToMonth, shallowClone, getValueType } from './shared/generalUtils';
 import { TYPE_SINGLE_DATE, TYPE_RANGE, TYPE_MUTLI_DATE } from './shared/constants';
 import { useLocaleUtils, useLocaleLanguage } from './shared/hooks';
 
 import { Header, MonthSelector, YearSelector, DaysList } from './components';
+import useEventListener from './hooks/useEventListener';
 
 const Calendar = ({
   value,
@@ -41,16 +42,12 @@ const Calendar = ({
     isYearSelectorOpen: false,
   });
 
-  useEffect(() => {
-    const handleKeyUp = ({ key }) => {
-      /* istanbul ignore else */
-      if (key === 'Tab') calendarElement.current.classList.remove('-noFocusOutline');
-    };
-    calendarElement.current.addEventListener('keyup', handleKeyUp, false);
-    return () => {
-      calendarElement.current.removeEventListener('keyup', handleKeyUp, false);
-    };
-  });
+  const handleKeyUp = ({ key }) => {
+    /* istanbul ignore else */
+    if (key === 'Tab') calendarElement.current.classList.remove('-noFocusOutline');
+  };
+
+  useEventListener('keyup', handleKeyUp, calendarElement);
 
   const { getToday } = useLocaleUtils(locale);
   const { weekDays: weekDaysList, isRtl } = useLocaleLanguage(locale);
@@ -86,11 +83,19 @@ const Calendar = ({
       ...mainState,
       monthChangeDirection: direction,
     });
+
     if (direction === 'NEXT') {
-      handleOnChange({ ...activeDate, month: activeDate.month === 12 ? 1 : activeDate.month + 1 });
+      const month = activeDate.month === 12 ? 1 : activeDate.month + 1;
+      const year = activeDate.month === 12 ? activeDate.year + 1 : activeDate.year;
+
+      handleOnChange({ ...activeDate, month, year });
     }
+
     if (direction === 'PREVIOUS') {
-      handleOnChange({ ...activeDate, month: activeDate.month === 1 ? 12 : activeDate.month - 1 });
+      const month = activeDate.month === 1 ? 12 : activeDate.month - 1;
+      const year = activeDate.month === 1 ? activeDate.year - 1 : activeDate.year;
+
+      handleOnChange({ ...activeDate, month, year });
     }
   };
 
@@ -111,12 +116,13 @@ const Calendar = ({
     handleOnChange({ ...activeDate, month: newMonthNumber });
   };
 
-  const selectYear = year => {
+  const selectYear = newYearNumber => {
     setMainState({
       ...mainState,
-      activeDate: { ...activeDate, year },
+      activeDate: { ...activeDate, year: newYearNumber },
       isYearSelectorOpen: false,
     });
+    handleOnChange({ ...activeDate, year: newYearNumber });
   };
 
   return (
